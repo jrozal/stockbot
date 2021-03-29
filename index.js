@@ -46,30 +46,34 @@ const init = async () => {
     if (next20 > next50 && lastOrder !== 'BUY') {
       alpaca.createOrder({
         symbol: 'SPY',
-        qty: 100,
+        qty: 200,
         side: 'buy',
         type: 'market',
         time_in_force: 'day'
-      });
-
-      lastOrder = 'BUY';
-      console.log('\nBUY\n');
+      })
+      .then((order) => {
+        lastOrder = 'BUY';
+        console.log('\nBUY\n');
+      })
+      .catch(err => err);
     } else if (next20 < next50 && lastOrder !== 'SELL') {
       alpaca.createOrder({
         symbol: 'SPY',
-        qty: 100,
+        qty: 200,
         side: 'sell',
         type: 'market',
         time_in_force: 'day'
-      });
-
-      lastOrder = 'SELL';
-      console.log('\nSELL\n');
+      })
+      .then((order) => {
+        lastOrder = 'SELL';
+        console.log('\nSELL\n');
+      })
+      .catch(err => err);
     }
   };
 
   setInterval(() => {
-    console.log('trading...')
+    console.log('trading...', new Date().toString());
     trade();
   }, 60000);
 }
