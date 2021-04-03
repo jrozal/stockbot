@@ -46,7 +46,7 @@ const init = async () => {
     if (next20 > next50 && lastOrder !== 'BUY') {
       alpaca.createOrder({
         symbol: 'SPY',
-        qty: 200,
+        qty: 500,
         side: 'buy',
         type: 'market',
         time_in_force: 'day'
@@ -59,7 +59,7 @@ const init = async () => {
     } else if (next20 < next50 && lastOrder !== 'SELL') {
       alpaca.createOrder({
         symbol: 'SPY',
-        qty: 200,
+        qty: 500,
         side: 'sell',
         type: 'market',
         time_in_force: 'day'
