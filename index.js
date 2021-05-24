@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const SMA = require('technicalindicators').SMA;
 const Alpaca = require('@alpacahq/alpaca-trade-api');
 const { config } = require('./config.js');
@@ -46,7 +45,7 @@ const init = async () => {
     if (next20 > next50 && lastOrder !== 'BUY') {
       alpaca.createOrder({
         symbol: 'SPY',
-        qty: 500,
+        qty: 250,
         side: 'buy',
         type: 'market',
         time_in_force: 'day'
@@ -59,7 +58,7 @@ const init = async () => {
     } else if (next20 < next50 && lastOrder !== 'SELL') {
       alpaca.createOrder({
         symbol: 'SPY',
-        qty: 500,
+        qty: 250,
         side: 'sell',
         type: 'market',
         time_in_force: 'day'
@@ -75,7 +74,7 @@ const init = async () => {
   setInterval(() => {
     console.log('trading...', new Date().toString());
     trade();
-  }, 60000);
+  }, 2000);
 }
 
 init();
