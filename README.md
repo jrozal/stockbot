@@ -10,21 +10,30 @@ These instructions will get you a copy of the project up and running on your loc
 
 This project uses Alpaca stock trading API. You can learn more and sign up for an account at https://alpaca.markets.
 
-Within the root directory, create a filed named `.env` and input the following with your Alpaca credentials. I have prefilled the first line to execute trades via the paper trading URL. This may be changed to point to your live trading account.
+Within the root directory, create a filed named `.env` and input the following with your Alpaca credentials.
 
 ```
-APCA_API_BASE_URL=https://paper-api.alpaca.markets
 APCA_API_KEY_ID=
 APCA_API_SECRET_KEY=
 ```
 
 ### Installing
 
-From the root directory
-
 ```
 npm install
 ```
+
+### Configuration
+Inside the config.js file, configure the `tradeSettings` object to your desired settings. Please visit Alpaca to verify tradeable securities.
+```js
+const tradeSettings = {
+  // set security to trade (in string format)
+  stock: 'SPY',
+  // set quantity to trade (positive integer)
+  quantity: 250
+};
+```
+Please also view the `config` object, and note that paper trading is set to `true`.
 
 ### Running bot
 
